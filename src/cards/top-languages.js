@@ -171,7 +171,9 @@ const donutCenterTranslation = (totalLangs) => {
  * @returns {{ langs: Lang[], totalLanguageSize: number }} Trimmed top languages and total size.
  */
 const trimTopLanguages = (topLangs, langs_count, hide) => {
-  let langs = Object.values(topLangs);
+  let langs = Object.values(topLangs).map((lang) =>
+  lang.name === "C#" ? { ...lang, color: "#178600" } : lang,
+  );
   let langsToHide = {};
   let langsCount = clampValue(langs_count, 1, MAXIMUM_LANGS_COUNT);
 
